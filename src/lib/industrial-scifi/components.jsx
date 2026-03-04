@@ -285,6 +285,118 @@ export const SearchInput = ({ id = "", placeholder = "Search...", ...props }) =>
   </div>
 );
 
+// Modal Component
+export const Modal = ({ isOpen = false, onClose, title = "", children, footer = null }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="isf-modal-overlay" onClick={onClose}>
+      <div className="isf-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="isf-modal-header">
+          <div className="isf-modal-title">{title}</div>
+          <button className="isf-modal-close" onClick={onClose}>×</button>
+        </div>
+        <div className="isf-modal-body">{children}</div>
+        {footer && <div className="isf-modal-footer">{footer}</div>}
+      </div>
+    </div>
+  );
+};
+
+// Toast Component
+export const Toast = ({ type = "info", title = "", message = "", onClose }) => (
+  <div className={`isf-toast isf-toast-${type}`}>
+    <div className="isf-toast-icon">
+      {type === 'success' && <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm-2 15l-5-5 1.4-1.4L8 12.2l7.6-7.6L17 6l-9 9z"/></svg>}
+      {type === 'error' && <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm1 15H9v-2h2v2zm0-4H9V5h2v6z"/></svg>}
+      {type === 'warning' && <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0L0 18h20L10 0zm1 15H9v-2h2v2zm0-4H9V6h2v5z"/></svg>}
+      {type === 'info' && <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm1 15H9V9h2v6zm0-8H9V5h2v2z"/></svg>}
+    </div>
+    <div className="isf-toast-content">
+      {title && <div className="isf-toast-title">{title}</div>}
+      <div className="isf-toast-message">{message}</div>
+    </div>
+    {onClose && (
+      <button className="isf-toast-close" onClick={onClose}>×</button>
+    )}
+  </div>
+);
+
+export const ToastContainer = ({ children }) => (
+  <div className="isf-toast-container">{children}</div>
+);
+
+// Loading Spinner
+export const Spinner = ({ size = "medium" }) => (
+  <div className={`isf-spinner ${size === 'small' ? 'isf-spinner-small' : size === 'large' ? 'isf-spinner-large' : ''}`}></div>
+);
+
+// Skeleton Loader
+export const Skeleton = ({ type = "text" }) => (
+  <div className={`isf-skeleton isf-skeleton-${type}`}></div>
+);
+
+// Tooltip
+export const Tooltip = ({ text = "", children }) => (
+  <div className="isf-tooltip-wrapper">
+    {children}
+    <div className="isf-tooltip">{text}</div>
+  </div>
+);
+
+// Accordion Component
+export const AccordionItem = ({ title = "", children, isOpen = false, onClick }) => (
+  <div className={`isf-accordion-item ${isOpen ? 'active' : ''}`}>
+    <div className="isf-accordion-header" onClick={onClick}>
+      <span>{title}</span>
+      <svg className="isf-accordion-icon" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 11L3 6h10z"/>
+      </svg>
+    </div>
+    <div className="isf-accordion-content">
+      <div className="isf-accordion-body">{children}</div>
+    </div>
+  </div>
+);
+
+export const Accordion = ({ children }) => (
+  <div className="isf-accordion">{children}</div>
+);
+
+// Tabs Component
+export const Tab = ({ label = "", isActive = false, onClick }) => (
+  <button className={`isf-tab ${isActive ? 'active' : ''}`} onClick={onClick}>
+    {label}
+  </button>
+);
+
+export const TabContent = ({ children, isActive = false }) => (
+  <div className={`isf-tab-content ${isActive ? 'active' : ''}`}>
+    {children}
+  </div>
+);
+
+export const Tabs = ({ children }) => (
+  <div className="isf-tabs">{children}</div>
+);
+
+export const TabsNav = ({ children }) => (
+  <div className="isf-tabs-nav">{children}</div>
+);
+
+// Alert Component
+export const Alert = ({ type = "info", title = "", children, onDismiss }) => (
+  <div className={`isf-alert isf-alert-${type}`}>
+    <div className="isf-alert-content">
+      {title && <div className="isf-alert-title">{title}</div>}
+      <div>{children}</div>
+    </div>
+    {onDismiss && (
+      <button className="isf-alert-dismiss" onClick={onDismiss}>×</button>
+    )}
+  </div>
+);
+
 export default {
   CornerMark,
   CornerMarks,
@@ -308,5 +420,18 @@ export default {
   FormHelp,
   InputGroup,
   Fieldset,
-  SearchInput
+  SearchInput,
+  Modal,
+  Toast,
+  ToastContainer,
+  Spinner,
+  Skeleton,
+  Tooltip,
+  Accordion,
+  AccordionItem,
+  Tab,
+  TabContent,
+  Tabs,
+  TabsNav,
+  Alert
 };

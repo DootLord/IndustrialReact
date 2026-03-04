@@ -3,7 +3,7 @@
 
 export { default as ISFComponents } from './components.jsx';
 
-// Re-export common SVG components
+// Re-export all components
 export {
   CornerMark,
   CornerMarks,
@@ -27,7 +27,20 @@ export {
   FormHelp,
   InputGroup,
   Fieldset,
-  SearchInput
+  SearchInput,
+  Modal,
+  Toast,
+  ToastContainer,
+  Spinner,
+  Skeleton,
+  Tooltip,
+  Accordion,
+  AccordionItem,
+  Tab,
+  TabContent,
+  Tabs,
+  TabsNav,
+  Alert
 } from './components.jsx';
 
 // CSS is imported via index.css

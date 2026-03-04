@@ -1,9 +1,38 @@
 // Import the Industrial Sci-Fi library
 import '../lib/industrial-scifi/index.css'
+import { useState } from 'react'
 
 function ComponentShowcase() {
+  const [primaryColor, setPrimaryColor] = useState('#FF5722')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState(0)
+  const [openAccordion, setOpenAccordion] = useState(null)
+  const [toasts, setToasts] = useState([])
+
+  const addToast = (type) => {
+    const newToast = {
+      id: Date.now(),
+      type,
+      title: `${type.toUpperCase()} NOTIFICATION`,
+      message: 'This is a system notification message.'
+    }
+    setToasts([...toasts, newToast])
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== newToast.id))
+    }, 3000)
+  }
+
+  const presetColors = [
+    { name: 'ORANGE', value: '#FF5722' },
+    { name: 'CYAN', value: '#00BCD4' },
+    { name: 'GREEN', value: '#4CAF50' },
+    { name: 'PURPLE', value: '#9C27B0' },
+    { name: 'AMBER', value: '#FFC107' },
+    { name: 'RED', value: '#F44336' },
+  ]
+
   return (
-    <div className="isf-canvas">
+    <div className="isf-canvas" style={{ '--isf-color-accent-primary': primaryColor }}>
       {/* Background Layers */}
       <div className="isf-bg-grid"></div>
       <div className="isf-bg-noise"></div>
@@ -50,6 +79,45 @@ function ComponentShowcase() {
           <p className="isf-readout">
             A COMPREHENSIVE DESIGN SYSTEM FOR CREATING INDUSTRIAL/CORPORATE SCI-FI INTERFACES
           </p>
+        </section>
+
+        {/* Color Theme Selector */}
+        <section className="isf-mb-20">
+          <div className="isf-panel" style={{ padding: 'var(--isf-space-8)' }}>
+            <div className="isf-flex isf-gap-4 isf-items-center isf-flex-wrap">
+              <label className="isf-label" style={{ minWidth: '120px' }}>PRIMARY COLOR:</label>
+              <div className="isf-flex isf-gap-3">
+                {presetColors.map(color => (
+                  <button
+                    key={color.value}
+                    onClick={() => setPrimaryColor(color.value)}
+                    className="isf-chip"
+                    style={{
+                      background: primaryColor === color.value ? color.value : 'transparent',
+                      borderColor: color.value,
+                      color: primaryColor === color.value ? '#1a1a1a' : color.value,
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    {color.name}
+                  </button>
+                ))}
+                <input
+                  type="color"
+                  value={primaryColor}
+                  onChange={(e) => setPrimaryColor(e.target.value)}
+                  style={{
+                    width: '60px',
+                    height: '32px',
+                    border: '1px solid var(--isf-color-base-light)',
+                    background: 'transparent',
+                    cursor: 'pointer'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Component Sections */}
@@ -567,6 +635,331 @@ function ComponentShowcase() {
                 <span className="isf-form-help">Enter alphanumeric characters only</span>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* UI Components */}
+        <section className="isf-mb-20">
+          <h2 className="isf-text-4xl isf-font-display isf-mb-12 isf-border-b isf-pb-4">
+            UI COMPONENTS
+          </h2>
+
+          {/* Modal */}
+          <div className="isf-mb-12">
+            <h3 className="isf-text-2xl isf-font-display isf-mb-6">MODAL DIALOG</h3>
+            
+            <button className="isf-button isf-button-primary" onClick={() => setModalOpen(true)}>
+              OPEN MODAL
+            </button>
+
+            {modalOpen && (
+              <div className="isf-modal-overlay" onClick={() => setModalOpen(false)}>
+                <div className="isf-modal" onClick={(e) => e.stopPropagation()}>
+                  <div className="isf-modal-header">
+                    <div className="isf-modal-title">MISSION BRIEFING</div>
+                    <button className="isf-modal-close" onClick={() => setModalOpen(false)}>×</button>
+                  </div>
+                  <div className="isf-modal-body">
+                    <p className="isf-text-md isf-mb-6">
+                      This is a modal dialog component with a clean industrial design aesthetic.
+                      It features smooth animations and proper backdrop handling.
+                    </p>
+                    <div className="isf-readout">
+                      <div>STATUS: AWAITING CONFIRMATION</div>
+                      <div>PRIORITY: HIGH</div>
+                      <div>SECTOR: 001-F</div>
+                    </div>
+                  </div>
+                  <div className="isf-modal-footer">
+                    <button className="isf-button" onClick={() => setModalOpen(false)}>CANCEL</button>
+                    <button className="isf-button isf-button-primary" onClick={() => setModalOpen(false)}>CONFIRM</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <pre className="isf-panel isf-text-xs isf-mt-8">
+{`<Modal 
+  isOpen={modalOpen} 
+  onClose={() => setModalOpen(false)}
+  title="MISSION BRIEFING"
+  footer={<>
+    <button className="isf-button">CANCEL</button>
+    <button className="isf-button isf-button-primary">CONFIRM</button>
+  </>}
+>
+  <p>Modal content goes here...</p>
+</Modal>`}
+            </pre>
+          </div>
+
+          {/* Alerts */}
+          <div className="isf-mb-12">
+            <h3 className="isf-text-2xl isf-font-display isf-mb-6">ALERTS & NOTIFICATIONS</h3>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }} className="isf-mb-8">
+              <div className="isf-alert isf-alert-success">
+                <div className="isf-alert-content">
+                  <div className="isf-alert-title">SUCCESS</div>
+                  <div>Operation completed successfully. All systems nominal.</div>
+                </div>
+                <button className="isf-alert-dismiss">×</button>
+              </div>
+
+              <div className="isf-alert isf-alert-error">
+                <div className="isf-alert-content">
+                  <div className="isf-alert-title">ERROR</div>
+                  <div>System malfunction detected. Immediate action required.</div>
+                </div>
+                <button className="isf-alert-dismiss">×</button>
+              </div>
+
+              <div className="isf-alert isf-alert-warning">
+                <div className="isf-alert-content">
+                  <div className="isf-alert-title">WARNING</div>
+                  <div>Resource levels approaching critical threshold.</div>
+                </div>
+                <button className="isf-alert-dismiss">×</button>
+              </div>
+
+              <div className="isf-alert isf-alert-info">
+                <div className="isf-alert-content">
+                  <div className="isf-alert-title">INFO</div>
+                  <div>System update available. Scheduled maintenance in 24 hours.</div>
+                </div>
+                <button className="isf-alert-dismiss">×</button>
+              </div>
+            </div>
+
+            <pre className="isf-panel isf-text-xs">
+{`<Alert type="success" title="SUCCESS" onDismiss={handleDismiss}>
+  Operation completed successfully.
+</Alert>`}
+            </pre>
+          </div>
+
+          {/* Toasts */}
+          <div className="isf-mb-12">
+            <h3 className="isf-text-2xl isf-font-display isf-mb-6">TOAST NOTIFICATIONS</h3>
+            
+            <div className="isf-flex isf-gap-4 isf-mb-8">
+              <button className="isf-button" onClick={() => addToast('success')}>SUCCESS</button>
+              <button className="isf-button" onClick={() => addToast('error')}>ERROR</button>
+              <button className="isf-button" onClick={() => addToast('warning')}>WARNING</button>
+              <button className="isf-button" onClick={() => addToast('info')}>INFO</button>
+            </div>
+
+            {toasts.length > 0 && (
+              <div className="isf-toast-container">
+                {toasts.map(toast => (
+                  <div key={toast.id} className={`isf-toast isf-toast-${toast.type}`}>
+                    <div className="isf-toast-icon">
+                      <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                        {toast.type === 'success' && <path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm-2 15l-5-5 1.4-1.4L8 12.2l7.6-7.6L17 6l-9 9z"/>}
+                        {toast.type === 'error' && <path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm1 15H9v-2h2v2zm0-4H9V5h2v6z"/>}
+                        {toast.type === 'warning' && <path d="M10 0L0 18h20L10 0zm1 15H9v-2h2v2zm0-4H9V6h2v5z"/>}
+                        {toast.type === 'info' && <path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm1 15H9V9h2v6zm0-8H9V5h2v2z"/>}
+                      </svg>
+                    </div>
+                    <div className="isf-toast-content">
+                      <div className="isf-toast-title">{toast.title}</div>
+                      <div className="isf-toast-message">{toast.message}</div>
+                    </div>
+                    <button className="isf-toast-close" onClick={() => setToasts(toasts.filter(t => t.id !== toast.id))}>×</button>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <pre className="isf-panel isf-text-xs isf-mt-8">
+{`<ToastContainer>
+  <Toast 
+    type="success" 
+    title="SUCCESS" 
+    message="Operation completed." 
+    onClose={handleClose} 
+  />
+</ToastContainer>`}
+            </pre>
+          </div>
+
+          {/* Tabs */}
+          <div className="isf-mb-12">
+            <h3 className="isf-text-2xl isf-font-display isf-mb-6">TABS</h3>
+            
+            <div className="isf-tabs isf-mb-8">
+              <div className="isf-tabs-nav">
+                <button 
+                  className={`isf-tab ${activeTab === 0 ? 'active' : ''}`}
+                  onClick={() => setActiveTab(0)}
+                >
+                  OVERVIEW
+                </button>
+                <button 
+                  className={`isf-tab ${activeTab === 1 ? 'active' : ''}`}
+                  onClick={() => setActiveTab(1)}
+                >
+                  SPECIFICATIONS
+                </button>
+                <button 
+                  className={`isf-tab ${activeTab === 2 ? 'active' : ''}`}
+                  onClick={() => setActiveTab(2)}
+                >
+                  OPERATIONS
+                </button>
+              </div>
+
+              <div className={`isf-tab-content ${activeTab === 0 ? 'active' : ''}`}>
+                <p className="isf-text-md isf-mb-4">
+                  System overview and status information. All operational parameters within nominal ranges.
+                </p>
+                <div className="isf-readout">
+                  <div>STATUS: OPERATIONAL</div>
+                  <div>UPTIME: 99.7%</div>
+                  <div>LAST CHECK: 00:02:14</div>
+                </div>
+              </div>
+
+              <div className={`isf-tab-content ${activeTab === 1 ? 'active' : ''}`}>
+                <p className="isf-text-md isf-mb-4">
+                  Technical specifications and hardware configuration details.
+                </p>
+                <div className="isf-readout">
+                  <div>PROCESSOR: QUANTUM CORE v4.2</div>
+                  <div>MEMORY: 512 TB</div>
+                  <div>NETWORK: 10 GBPS</div>
+                </div>
+              </div>
+
+              <div className={`isf-tab-content ${activeTab === 2 ? 'active' : ''}`}>
+                <p className="isf-text-md isf-mb-4">
+                  Current operational status and active mission parameters.
+                </p>
+                <div className="isf-readout">
+                  <div>ACTIVE MISSIONS: 12</div>
+                  <div>UNITS DEPLOYED: 47</div>
+                  <div>SECTORS COVERED: 8</div>
+                </div>
+              </div>
+            </div>
+
+            <pre className="isf-panel isf-text-xs">
+{`<Tabs>
+  <TabsNav>
+    <Tab label="OVERVIEW" isActive={activeTab === 0} onClick={...} />
+    <Tab label="SPECIFICATIONS" isActive={activeTab === 1} onClick={...} />
+  </TabsNav>
+  <TabContent isActive={activeTab === 0}>Content 1</TabContent>
+  <TabContent isActive={activeTab === 1}>Content 2</TabContent>
+</Tabs>`}
+            </pre>
+          </div>
+
+          {/* Accordion */}
+          <div className="isf-mb-12">
+            <h3 className="isf-text-2xl isf-font-display isf-mb-6">ACCORDION</h3>
+            
+            <div className="isf-accordion isf-mb-8">
+              <div className={`isf-accordion-item ${openAccordion === 0 ? 'active' : ''}`}>
+                <div className="isf-accordion-header" onClick={() => setOpenAccordion(openAccordion === 0 ? null : 0)}>
+                  <span>SYSTEM CONFIGURATION</span>
+                  <svg className="isf-accordion-icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 11L3 6h10z"/>
+                  </svg>
+                </div>
+                <div className="isf-accordion-content">
+                  <div className="isf-accordion-body">
+                    Core system configuration parameters and environmental settings. All values are dynamically
+                    adjustable through the control interface.
+                  </div>
+                </div>
+              </div>
+
+              <div className={`isf-accordion-item ${openAccordion === 1 ? 'active' : ''}`}>
+                <div className="isf-accordion-header" onClick={() => setOpenAccordion(openAccordion === 1 ? null : 1)}>
+                  <span>SECURITY PROTOCOLS</span>
+                  <svg className="isf-accordion-icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 11L3 6h10z"/>
+                  </svg>
+                </div>
+                <div className="isf-accordion-content">
+                  <div className="isf-accordion-body">
+                    Advanced security measures including multi-factor authentication, encrypted communications,
+                    and automated threat detection systems.
+                  </div>
+                </div>
+              </div>
+
+              <div className={`isf-accordion-item ${openAccordion === 2 ? 'active' : ''}`}>
+                <div className="isf-accordion-header" onClick={() => setOpenAccordion(openAccordion === 2 ? null : 2)}>
+                  <span>MAINTENANCE SCHEDULE</span>
+                  <svg className="isf-accordion-icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 11L3 6h10z"/>
+                  </svg>
+                </div>
+                <div className="isf-accordion-content">
+                  <div className="isf-accordion-body">
+                    Routine maintenance windows and system update schedules. All operations are performed
+                    during designated off-peak hours to minimize disruption.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <pre className="isf-panel isf-text-xs">
+{`<Accordion>
+  <AccordionItem 
+    title="SYSTEM CONFIGURATION" 
+    isOpen={openAccordion === 0}
+    onClick={handleToggle}
+  >
+    Content goes here...
+  </AccordionItem>
+</Accordion>`}
+            </pre>
+          </div>
+
+          {/* Loading States */}
+          <div className="isf-mb-12">
+            <h3 className="isf-text-2xl isf-font-display isf-mb-6">LOADING STATES</h3>
+            
+            <div className="isf-flex isf-gap-8 isf-mb-8 isf-items-center">
+              <div className="isf-spinner isf-spinner-small"></div>
+              <div className="isf-spinner"></div>
+              <div className="isf-spinner isf-spinner-large"></div>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }} className="isf-mb-8">
+              <div className="isf-skeleton isf-skeleton-title"></div>
+              <div className="isf-skeleton isf-skeleton-text"></div>
+              <div className="isf-skeleton isf-skeleton-text"></div>
+              <div className="isf-skeleton isf-skeleton-block"></div>
+            </div>
+
+            <pre className="isf-panel isf-text-xs">
+{`<Spinner size="small" />
+<Skeleton type="title" />
+<Skeleton type="text" />
+<Skeleton type="block" />`}
+            </pre>
+          </div>
+
+          {/* Tooltip */}
+          <div className="isf-mb-8">
+            <h3 className="isf-text-2xl isf-font-display isf-mb-6">TOOLTIP</h3>
+            
+            <div className="isf-mb-8">
+              <div className="isf-tooltip-wrapper isf-inline-block">
+                <button className="isf-button">HOVER FOR INFO</button>
+                <div className="isf-tooltip">ADDITIONAL INFORMATION</div>
+              </div>
+            </div>
+
+            <pre className="isf-panel isf-text-xs">
+{`<Tooltip text="ADDITIONAL INFORMATION">
+  <button className="isf-button">HOVER FOR INFO</button>
+</Tooltip>`}
+            </pre>
           </div>
         </section>
 
