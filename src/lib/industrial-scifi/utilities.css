@@ -1,0 +1,218 @@
+/* ===================================
+   INDUSTRIAL SCI-FI UTILITIES
+   Helper classes for rapid development
+   =================================== */
+
+/* ===================================
+   LAYOUT UTILITIES
+   =================================== */
+
+/* Flexbox utilities */
+.isf-flex { display: flex; }
+.isf-flex-col { flex-direction: column; }
+.isf-flex-row { flex-direction: row; }
+.isf-flex-center { align-items: center; justify-content: center; }
+.isf-flex-between { justify-content: space-between; }
+.isf-flex-around { justify-content: space-around; }
+.isf-flex-start { justify-content: flex-start; }
+.isf-flex-end { justify-content: flex-end; }
+.isf-items-center { align-items: center; }
+.isf-items-start { align-items: flex-start; }
+.isf-items-end { align-items: flex-end; }
+
+/* Grid utilities */
+.isf-grid { display: grid; }
+.isf-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.isf-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.isf-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.isf-grid-auto { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+/* Gap utilities */
+.isf-gap-1 { gap: var(--isf-space-1); }
+.isf-gap-2 { gap: var(--isf-space-2); }
+.isf-gap-3 { gap: var(--isf-space-3); }
+.isf-gap-4 { gap: var(--isf-space-4); }
+.isf-gap-6 { gap: var(--isf-space-6); }
+.isf-gap-8 { gap: var(--isf-space-8); }
+.isf-gap-12 { gap: var(--isf-space-12); }
+.isf-gap-16 { gap: var(--isf-space-16); }
+
+/* ===================================
+   SPACING UTILITIES
+   =================================== */
+
+/* Margin utilities */
+.isf-m-0 { margin: 0; }
+.isf-m-2 { margin: var(--isf-space-2); }
+.isf-m-4 { margin: var(--isf-space-4); }
+.isf-m-6 { margin: var(--isf-space-6); }
+.isf-m-8 { margin: var(--isf-space-8); }
+.isf-m-12 { margin: var(--isf-space-12); }
+.isf-m-16 { margin: var(--isf-space-16); }
+
+/* Margin top/bottom */
+.isf-mt-2 { margin-top: var(--isf-space-2); }
+.isf-mt-4 { margin-top: var(--isf-space-4); }
+.isf-mt-6 { margin-top: var(--isf-space-6); }
+.isf-mt-8 { margin-top: var(--isf-space-8); }
+.isf-mt-12 { margin-top: var(--isf-space-12); }
+.isf-mt-16 { margin-top: var(--isf-space-16); }
+.isf-mt-20 { margin-top: var(--isf-space-20); }
+
+.isf-mb-2 { margin-bottom: var(--isf-space-2); }
+.isf-mb-4 { margin-bottom: var(--isf-space-4); }
+.isf-mb-6 { margin-bottom: var(--isf-space-6); }
+.isf-mb-8 { margin-bottom: var(--isf-space-8); }
+.isf-mb-12 { margin-bottom: var(--isf-space-12); }
+.isf-mb-16 { margin-bottom: var(--isf-space-16); }
+.isf-mb-20 { margin-bottom: var(--isf-space-20); }
+
+/* Padding utilities */
+.isf-p-0 { padding: 0; }
+.isf-p-2 { padding: var(--isf-space-2); }
+.isf-p-4 { padding: var(--isf-space-4); }
+.isf-p-6 { padding: var(--isf-space-6); }
+.isf-p-8 { padding: var(--isf-space-8); }
+.isf-p-12 { padding: var(--isf-space-12); }
+.isf-p-16 { padding: var(--isf-space-16); }
+
+/* Padding top/bottom */
+.isf-pt-8 { padding-top: var(--isf-space-8); }
+.isf-pt-12 { padding-top: var(--isf-space-12); }
+.isf-pt-16 { padding-top: var(--isf-space-16); }
+.isf-pb-8 { padding-bottom: var(--isf-space-8); }
+.isf-pb-12 { padding-bottom: var(--isf-space-12); }
+.isf-pb-16 { padding-bottom: var(--isf-space-16); }
+
+/* ===================================
+   TEXT UTILITIES
+   =================================== */
+
+/* Font families */
+.isf-font-display { font-family: var(--isf-font-display); }
+.isf-font-mono { font-family: var(--isf-font-mono); }
+
+/* Font sizes */
+.isf-text-xs { font-size: var(--isf-text-xs); }
+.isf-text-sm { font-size: var(--isf-text-sm); }
+.isf-text-base { font-size: var(--isf-text-base); }
+.isf-text-md { font-size: var(--isf-text-md); }
+.isf-text-lg { font-size: var(--isf-text-lg); }
+.isf-text-xl { font-size: var(--isf-text-xl); }
+.isf-text-2xl { font-size: var(--isf-text-2xl); }
+.isf-text-3xl { font-size: var(--isf-text-3xl); }
+.isf-text-4xl { font-size: var(--isf-text-4xl); }
+.isf-text-5xl { font-size: var(--isf-text-5xl); }
+.isf-text-6xl { font-size: var(--isf-text-6xl); }
+.isf-text-7xl { font-size: var(--isf-text-7xl); }
+.isf-text-8xl { font-size: var(--isf-text-8xl); font-weight: var(--isf-weight-black); }
+.isf-text-hero { font-size: var(--isf-text-hero); font-weight: var(--isf-weight-black); }
+
+/* Font weights */
+.isf-weight-normal { font-weight: var(--isf-weight-normal); }
+.isf-weight-medium { font-weight: var(--isf-weight-medium); }
+.isf-weight-semibold { font-weight: var(--isf-weight-semibold); }
+.isf-weight-bold { font-weight: var(--isf-weight-bold); }
+.isf-weight-black { font-weight: var(--isf-weight-black); }
+
+/* Letter spacing */
+.isf-tracking-tight { letter-spacing: var(--isf-tracking-tight); }
+.isf-tracking-normal { letter-spacing: var(--isf-tracking-normal); }
+.isf-tracking-wide { letter-spacing: var(--isf-tracking-wide); }
+.isf-tracking-wider { letter-spacing: var(--isf-tracking-wider); }
+.isf-tracking-widest { letter-spacing: var(--isf-tracking-widest); }
+
+/* Text transforms */
+.isf-uppercase { text-transform: uppercase; }
+.isf-lowercase { text-transform: lowercase; }
+.isf-capitalize { text-transform: capitalize; }
+
+/* Text alignment */
+.isf-text-left { text-align: left; }
+.isf-text-center { text-align: center; }
+.isf-text-right { text-align: right; }
+
+/* Line height */
+.isf-leading-none { line-height: 0.9; }
+.isf-leading-tight { line-height: 1.2; }
+.isf-leading-normal { line-height: 1.5; }
+.isf-leading-relaxed { line-height: 1.8; }
+
+/* ===================================
+   COLOR UTILITIES
+   =================================== */
+
+.isf-color-light { color: var(--isf-color-base-light); }
+.isf-color-dark { color: var(--isf-color-base-dark); }
+.isf-color-accent { color: var(--isf-color-accent-primary); }
+
+.isf-bg-dark { background: var(--isf-color-base-dark); }
+.isf-bg-mid { background: var(--isf-color-base-mid); }
+.isf-bg-light { background: var(--isf-color-base-light); }
+.isf-bg-accent { background: var(--isf-color-accent-primary); }
+
+/* ===================================
+   OPACITY UTILITIES
+   =================================== */
+
+.isf-opacity-0 { opacity: 0; }
+.isf-opacity-30 { opacity: 0.3; }
+.isf-opacity-50 { opacity: 0.5; }
+.isf-opacity-60 { opacity: 0.6; }
+.isf-opacity-70 { opacity: 0.7; }
+.isf-opacity-80 { opacity: 0.8; }
+.isf-opacity-90 { opacity: 0.9; }
+.isf-opacity-100 { opacity: 1; }
+
+/* ===================================
+   BORDER UTILITIES
+   =================================== */
+
+.isf-border { border: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy); }
+.isf-border-t { border-top: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy); }
+.isf-border-b { border-bottom: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy); }
+.isf-border-l { border-left: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy); }
+.isf-border-r { border-right: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy); }
+
+.isf-border-accent { border-color: var(--isf-color-accent-primary); }
+.isf-border-thick { border-width: var(--isf-border-thin); }
+
+/* ===================================
+   POSITION UTILITIES
+   =================================== */
+
+.isf-relative { position: relative; }
+.isf-absolute { position: absolute; }
+.isf-fixed { position: fixed; }
+
+/* ===================================
+   DISPLAY UTILITIES
+   =================================== */
+
+.isf-block { display: block; }
+.isf-inline { display: inline; }
+.isf-inline-block { display: inline-block; }
+.isf-hidden { display: none; }
+
+/* ===================================
+   WIDTH & MAXWIDTH
+   =================================== */
+
+.isf-w-full { width: 100%; }
+.isf-w-auto { width: auto; }
+.isf-max-w-screen { max-width: 100vw; }
+
+/* ===================================
+   RESPONSIVE UTILITIES
+   =================================== */
+
+@media (max-width: 768px) {
+  .isf-mobile-hidden { display: none; }
+  .isf-mobile-flex-col { flex-direction: column; }
+  .isf-mobile-text-center { text-align: center; }
+  .isf-mobile-grid-1 { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 769px) {
+  .isf-desktop-hidden { display: none; }
+}

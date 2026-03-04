@@ -1,0 +1,33 @@
+{
+  "name": "@webstyle/industrial-scifi",
+  "version": "1.0.0",
+  "description": "A comprehensive CSS design system for creating industrial/corporate sci-fi interfaces",
+  "main": "index.css",
+  "style": "index.css",
+  "files": [
+    "*.css",
+    "components.jsx",
+    "README.md"
+  ],
+  "keywords": [
+    "css",
+    "design-system",
+    "sci-fi",
+    "industrial",
+    "ui",
+    "fui",
+    "techno-brutalism",
+    "cyberpunk",
+    "corporate-scifi"
+  ],
+  "author": "WebStyle",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/industrial-scifi"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/industrial-scifi/issues"
+  },
+  "homepage": "https://github.com/yourusername/industrial-scifi#readme"
+}

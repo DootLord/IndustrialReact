@@ -1,0 +1,39 @@
+/* ===================================
+   INDUSTRIAL SCI-FI CSS LIBRARY
+   A complete design system for industrial/corporate sci-fi interfaces
+   
+   Version: 1.0.0
+   Author: WebStyle
+   License: MIT
+   =================================== */
+
+/* Import order matters - tokens first, then base, components, utilities */
+@import './tokens.css';
+@import './base.css';
+@import './components.css';
+@import './utilities.css';
+
+/* 
+   QUICK START GUIDE:
+   
+   1. Import this file in your project:
+      import 'industrial-scifi/index.css'
+   
+   2. Add the canvas class to your root element:
+      <div class="isf-canvas">
+   
+   3. Add background layers:
+      <div class="isf-bg-grid"></div>
+      <div class="isf-bg-noise"></div>
+   
+   4. Add content with a container:
+      <div class="isf-container">
+         <!-- Your content here -->
+      </div>
+   
+   5. Use components and utilities as needed:
+      <div class="isf-chip isf-chip-active">STATUS: ACTIVE</div>
+      <div class="isf-card">...</div>
+      
+   For full documentation, see README.md
+*/

@@ -1,0 +1,371 @@
+/* ===================================
+   INDUSTRIAL SCI-FI COMPONENTS
+   Reusable UI component library
+   =================================== */
+
+/* ===================================
+   STATUS CHIPS & BADGES
+   =================================== */
+
+.isf-chip {
+  display: inline-block;
+  padding: var(--isf-space-1) var(--isf-space-4);
+  border: var(--isf-border-hairline) solid var(--isf-color-base-light);
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-base);
+  font-weight: var(--isf-weight-semibold);
+  letter-spacing: var(--isf-tracking-widest);
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.isf-chip-active {
+  background: var(--isf-color-accent-primary);
+  border-color: var(--isf-color-accent-primary);
+  color: var(--isf-color-base-dark);
+}
+
+.isf-chip-outlined {
+  border-width: var(--isf-border-thin);
+  padding: var(--isf-space-2) var(--isf-space-6);
+  font-size: var(--isf-text-md);
+}
+
+.isf-chip-large {
+  padding: var(--isf-space-4) var(--isf-space-12);
+  font-size: var(--isf-text-2xl);
+  font-weight: var(--isf-weight-black);
+  letter-spacing: var(--isf-tracking-ultra);
+}
+
+/* ===================================
+   SYSTEM TEXT & LABELS
+   =================================== */
+
+.isf-system-text {
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-md);
+  font-weight: var(--isf-weight-semibold);
+  letter-spacing: var(--isf-tracking-wider);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.isf-label {
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-sm);
+  letter-spacing: var(--isf-tracking-wider);
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.isf-readout {
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-xs);
+  line-height: 1.8;
+  opacity: 0.6;
+  letter-spacing: var(--isf-tracking-wide);
+}
+
+/* ===================================
+   CARDS & PANELS
+   =================================== */
+
+.isf-card {
+  background: var(--isf-color-overlay-light);
+  border: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy);
+  padding: var(--isf-space-8);
+  position: relative;
+}
+
+.isf-card-accent-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--isf-border-thick);
+  height: 100%;
+  background: var(--isf-color-accent-primary);
+}
+
+.isf-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--isf-space-6);
+}
+
+.isf-card-id {
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-sm);
+  letter-spacing: var(--isf-tracking-wider);
+  opacity: 0.6;
+}
+
+/* Panel variant */
+.isf-panel {
+  background: var(--isf-color-dark-overlay-heavy);
+  border: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy);
+  padding: var(--isf-space-8);
+  font-family: var(--isf-font-mono);
+}
+
+.isf-panel-header {
+  font-size: var(--isf-text-xl);
+  font-weight: var(--isf-weight-bold);
+  letter-spacing: var(--isf-tracking-widest);
+  margin-bottom: var(--isf-space-6);
+  color: var(--isf-color-accent-primary);
+  text-transform: uppercase;
+}
+
+/* ===================================
+   FEATURE BLOCKS
+   =================================== */
+
+.isf-feature-block {
+  position: relative;
+  padding: var(--isf-space-16);
+  border: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy);
+}
+
+.isf-feature-block-primary {
+  background: linear-gradient(135deg, var(--isf-color-accent-primary) 0%, var(--isf-color-accent-secondary) 100%);
+  color: var(--isf-color-base-dark);
+  padding: 0;
+  overflow: hidden;
+}
+
+.isf-feature-block-secondary {
+  background: var(--isf-color-base-mid);
+}
+
+/* ID Badge overlay */
+.isf-feature-id {
+  position: absolute;
+  top: var(--isf-space-8);
+  left: var(--isf-space-8);
+  font-size: var(--isf-text-7xl);
+  font-weight: var(--isf-weight-black);
+  color: rgba(26, 26, 26, 0.3);
+  line-height: 1;
+  z-index: 1;
+}
+
+/* Stripe pattern overlay */
+.isf-stripe-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(26, 26, 26, 0.3),
+    rgba(26, 26, 26, 0.3) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* ===================================
+   DIVIDERS & RULES
+   =================================== */
+
+.isf-divider {
+  width: 100%;
+  height: var(--isf-border-hairline);
+  background: var(--isf-color-base-light);
+  opacity: 0.3;
+  margin: var(--isf-space-8) 0;
+}
+
+.isf-divider-short {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.isf-divider-accent {
+  background: var(--isf-color-accent-primary);
+  opacity: 1;
+}
+
+/* ===================================
+   PROGRESS & STATUS INDICATORS
+   =================================== */
+
+.isf-progress-dots {
+  display: flex;
+  gap: var(--isf-space-2);
+}
+
+.isf-progress-dot {
+  width: 12px;
+  height: 12px;
+  border: var(--isf-border-hairline) solid var(--isf-color-overlay-heavy);
+  background: transparent;
+}
+
+.isf-progress-dot-active {
+  background: var(--isf-color-accent-primary);
+  border-color: var(--isf-color-accent-primary);
+}
+
+/* Dot clusters for decorative purposes */
+.isf-dot-cluster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--isf-space-3);
+}
+
+.isf-dot-cluster > * {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--isf-color-dark-overlay-mid);
+}
+
+/* ===================================
+   CROSSHAIRS & RETICLES
+   =================================== */
+
+.isf-crosshair {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.isf-crosshair svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===================================
+   COMPASS / DIRECTION INDICATOR
+   =================================== */
+
+.isf-compass {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.isf-compass-mark {
+  position: absolute;
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-xl);
+  font-weight: var(--isf-weight-bold);
+  color: var(--isf-color-accent-primary);
+}
+
+.isf-compass-mark-n { top: 0; left: 50%; transform: translateX(-50%); }
+.isf-compass-mark-e { right: 0; top: 50%; transform: translateY(-50%); }
+.isf-compass-mark-s { bottom: 0; left: 50%; transform: translateX(-50%); }
+.isf-compass-mark-w { left: 0; top: 50%; transform: translateY(-50%); }
+
+.isf-compass-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--isf-color-accent-primary);
+  border-radius: 50%;
+}
+
+.isf-compass-center::before,
+.isf-compass-center::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 87, 34, 0.3);
+}
+
+.isf-compass-center::before {
+  top: 50%;
+  left: -30px;
+  width: 60px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.isf-compass-center::after {
+  left: 50%;
+  top: -30px;
+  width: 1px;
+  height: 60px;
+  transform: translateX(-50%);
+}
+
+/* ===================================
+   BUTTONS & INTERACTIVE ELEMENTS
+   =================================== */
+
+.isf-button {
+  display: inline-block;
+  padding: var(--isf-space-3) var(--isf-space-6);
+  border: var(--isf-border-thin) solid var(--isf-color-base-light);
+  background: transparent;
+  color: var(--isf-color-base-light);
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-md);
+  font-weight: var(--isf-weight-semibold);
+  letter-spacing: var(--isf-tracking-wider);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--isf-transition-base);
+}
+
+.isf-button:hover {
+  background: var(--isf-color-base-light);
+  color: var(--isf-color-base-dark);
+}
+
+.isf-button-primary {
+  background: var(--isf-color-accent-primary);
+  border-color: var(--isf-color-accent-primary);
+  color: var(--isf-color-base-dark);
+}
+
+.isf-button-primary:hover {
+  background: var(--isf-color-accent-secondary);
+  border-color: var(--isf-color-accent-secondary);
+}
+
+/* ===================================
+   STATS DISPLAY
+   =================================== */
+
+.isf-stat-value {
+  font-size: var(--isf-text-6xl);
+  font-weight: var(--isf-weight-black);
+  color: var(--isf-color-accent-primary);
+  line-height: 1;
+  margin-bottom: var(--isf-space-2);
+  font-family: var(--isf-font-display);
+}
+
+.isf-stat-label {
+  font-family: var(--isf-font-mono);
+  font-size: var(--isf-text-base);
+  letter-spacing: var(--isf-tracking-widest);
+  opacity: 0.7;
+}
+
+/* ===================================
+   REGISTERED MARK BADGE
+   =================================== */
+
+.isf-registered-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.isf-registered-mark svg {
+  width: 100%;
+  height: 100%;
+}

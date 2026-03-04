@@ -1,0 +1,193 @@
+/* ===================================
+   INDUSTRIAL SCI-FI BASE STYLES
+   Core foundational styles
+   =================================== */
+
+/* Reset & Base */
+.isf-reset * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container/Canvas - Apply to root element */
+.isf-canvas {
+  position: relative;
+  min-height: 100vh;
+  background: var(--isf-color-base-dark);
+  color: var(--isf-color-base-light);
+  font-family: var(--isf-font-display);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   BACKGROUND LAYERS
+   =================================== */
+
+/* Grid Background Pattern */
+.isf-bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      0deg, 
+      transparent, 
+      transparent calc(var(--isf-grid-size) - 1px), 
+      var(--isf-color-overlay-mid) calc(var(--isf-grid-size) - 1px), 
+      var(--isf-color-overlay-mid) var(--isf-grid-size)
+    ),
+    repeating-linear-gradient(
+      90deg, 
+      transparent, 
+      transparent calc(var(--isf-grid-size) - 1px), 
+      var(--isf-color-overlay-mid) calc(var(--isf-grid-size) - 1px), 
+      var(--isf-color-overlay-mid) var(--isf-grid-size)
+    );
+  z-index: var(--isf-z-background);
+  pointer-events: none;
+}
+
+/* Dot Grid Pattern */
+.isf-bg-dots {
+  background-image: radial-gradient(
+    circle, 
+    var(--isf-color-overlay-mid) var(--isf-grid-dot-size), 
+    transparent var(--isf-grid-dot-size)
+  );
+  background-size: var(--isf-grid-size) var(--isf-grid-size);
+}
+
+/* Combined grid + dots */
+.isf-bg-grid::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle, 
+    rgba(212, 197, 176, 0.08) var(--isf-grid-dot-size), 
+    transparent var(--isf-grid-dot-size)
+  );
+  background-size: var(--isf-grid-size) var(--isf-grid-size);
+}
+
+/* Noise Texture Overlay */
+.isf-bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: var(--isf-z-overlay);
+}
+
+/* Scanline effect */
+.isf-bg-scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(212, 197, 176, 0.01) 2px,
+    rgba(212, 197, 176, 0.01) 4px
+  );
+  pointer-events: none;
+  z-index: var(--isf-z-overlay);
+}
+
+/* ===================================
+   CORNER REGISTRATION MARKS
+   =================================== */
+
+.isf-corner-marks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--isf-z-corner-marks);
+  color: var(--isf-color-base-light);
+  opacity: 0.6;
+}
+
+/* Corner mark positioning */
+.isf-corner-marks > * {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+}
+
+.isf-corner-marks > *:nth-child(1) { top: var(--isf-space-6); left: var(--isf-space-6); }
+.isf-corner-marks > *:nth-child(2) { top: var(--isf-space-6); right: var(--isf-space-6); }
+.isf-corner-marks > *:nth-child(3) { bottom: var(--isf-space-6); left: var(--isf-space-6); }
+.isf-corner-marks > *:nth-child(4) { bottom: var(--isf-space-6); right: var(--isf-space-6); }
+
+/* ===================================
+   CONTENT WRAPPER
+   =================================== */
+
+.isf-container {
+  position: relative;
+  z-index: var(--isf-z-content);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--isf-space-20) var(--isf-space-12);
+}
+
+.isf-container-wide {
+  max-width: 1600px;
+}
+
+.isf-container-narrow {
+  max-width: 1000px;
+}
+
+/* ===================================
+   TYPOGRAPHY BASE
+   =================================== */
+
+.isf-text-display {
+  font-family: var(--isf-font-display);
+  font-weight: var(--isf-weight-black);
+  letter-spacing: var(--isf-tracking-tight);
+  text-transform: uppercase;
+}
+
+.isf-text-mono {
+  font-family: var(--isf-font-mono);
+  letter-spacing: var(--isf-tracking-wider);
+}
+
+/* ===================================
+   SELECTION & SCROLLBAR
+   =================================== */
+
+.isf-canvas ::selection {
+  background: var(--isf-color-accent-primary);
+  color: var(--isf-color-base-dark);
+}
+
+.isf-canvas::-webkit-scrollbar {
+  width: 10px;
+}
+
+.isf-canvas::-webkit-scrollbar-track {
+  background: var(--isf-color-base-dark);
+}
+
+.isf-canvas::-webkit-scrollbar-thumb {
+  background: var(--isf-color-base-light);
+  opacity: 0.3;
+}
+
+.isf-canvas::-webkit-scrollbar-thumb:hover {
+  background: var(--isf-color-accent-primary);
+}

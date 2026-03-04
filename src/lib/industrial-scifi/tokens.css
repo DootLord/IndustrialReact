@@ -1,0 +1,99 @@
+/* ===================================
+   INDUSTRIAL SCI-FI DESIGN TOKENS
+   Design System Variables
+   =================================== */
+
+:root {
+  /* ===== COLOR PALETTE ===== */
+  --isf-color-base-dark: #1a1a1a;
+  --isf-color-base-mid: #2a2a2a;
+  --isf-color-base-light: #D4C5B0;
+  --isf-color-accent-primary: #FF5722;
+  --isf-color-accent-secondary: #E64A19;
+  
+  /* Color with opacity variants */
+  --isf-color-overlay-light: rgba(212, 197, 176, 0.02);
+  --isf-color-overlay-mid: rgba(212, 197, 176, 0.1);
+  --isf-color-overlay-heavy: rgba(212, 197, 176, 0.2);
+  --isf-color-dark-overlay: rgba(26, 26, 26, 0.2);
+  --isf-color-dark-overlay-mid: rgba(26, 26, 26, 0.3);
+  --isf-color-dark-overlay-heavy: rgba(26, 26, 26, 0.6);
+
+  /* ===== TYPOGRAPHY ===== */
+  --isf-font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --isf-font-mono: 'Courier New', 'Monaco', 'Consolas', monospace;
+  
+  /* Font sizes */
+  --isf-text-xs: 9px;
+  --isf-text-sm: 10px;
+  --isf-text-base: 11px;
+  --isf-text-md: 12px;
+  --isf-text-lg: 13px;
+  --isf-text-xl: 14px;
+  --isf-text-2xl: 16px;
+  --isf-text-3xl: 18px;
+  --isf-text-4xl: 28px;
+  --isf-text-5xl: 48px;
+  --isf-text-6xl: 56px;
+  --isf-text-7xl: 80px;
+  --isf-text-8xl: 96px;
+  --isf-text-hero: clamp(64px, 12vw, 160px);
+  
+  /* Font weights */
+  --isf-weight-normal: 400;
+  --isf-weight-medium: 500;
+  --isf-weight-semibold: 600;
+  --isf-weight-bold: 700;
+  --isf-weight-black: 900;
+  
+  /* Letter spacing */
+  --isf-tracking-tight: -0.02em;
+  --isf-tracking-normal: 0;
+  --isf-tracking-wide: 0.5px;
+  --isf-tracking-wider: 1px;
+  --isf-tracking-widest: 1.5px;
+  --isf-tracking-ultra: 2px;
+
+  /* ===== SPACING SCALE ===== */
+  --isf-space-1: 4px;
+  --isf-space-2: 8px;
+  --isf-space-3: 12px;
+  --isf-space-4: 16px;
+  --isf-space-5: 20px;
+  --isf-space-6: 24px;
+  --isf-space-8: 32px;
+  --isf-space-10: 40px;
+  --isf-space-12: 48px;
+  --isf-space-16: 64px;
+  --isf-space-20: 80px;
+  --isf-space-24: 96px;
+  --isf-space-32: 128px;
+
+  /* ===== BORDERS & STROKES ===== */
+  --isf-border-hairline: 1px;
+  --isf-border-thin: 2px;
+  --isf-border-medium: 3px;
+  --isf-border-thick: 4px;
+  
+  --isf-radius-none: 0;
+  --isf-radius-sm: 2px;
+  --isf-radius-md: 4px;
+
+  /* ===== GRID SYSTEM ===== */
+  --isf-grid-size: 32px;
+  --isf-grid-dot-size: 1px;
+  
+  /* ===== TRANSITIONS ===== */
+  --isf-transition-fast: 0.15s ease;
+  --isf-transition-base: 0.2s ease;
+  --isf-transition-slow: 0.3s ease;
+  
+  /* ===== Z-INDEX SCALE ===== */
+  --isf-z-base: 0;
+  --isf-z-background: 0;
+  --isf-z-overlay: 1;
+  --isf-z-content: 2;
+  --isf-z-ui: 10;
+  --isf-z-corner-marks: 100;
+  --isf-z-modal: 1000;
+}
