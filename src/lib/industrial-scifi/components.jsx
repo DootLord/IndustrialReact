@@ -147,6 +147,144 @@ export const CornerMarks = () => (
   </div>
 );
 
+// Form Components
+export const FormGroup = ({ children, className = "" }) => (
+  <div className={`isf-form-group ${className}`}>{children}</div>
+);
+
+export const FormLabel = ({ children, required = false, meta = null, htmlFor = "" }) => (
+  <label htmlFor={htmlFor} className={`isf-form-label ${required ? 'isf-form-label-required' : ''}`}>
+    {meta ? (
+      <span className="isf-form-label-inline">
+        <span>{children}</span>
+        <span className="isf-form-label-meta">{meta}</span>
+      </span>
+    ) : (
+      children
+    )}
+  </label>
+);
+
+export const Input = ({ id = "", type = "text", placeholder = "", error = false, ...props }) => (
+  <input 
+    id={id}
+    type={type} 
+    placeholder={placeholder}
+    className={`isf-input ${error ? 'isf-input-error' : ''}`}
+    {...props}
+  />
+);
+
+export const Textarea = ({ id = "", placeholder = "", rows = 5, ...props }) => (
+  <textarea
+    id={id}
+    rows={rows}
+    placeholder={placeholder}
+    className="isf-textarea"
+    {...props}
+  />
+);
+
+export const Select = ({ id = "", children, ...props }) => (
+  <select id={id} className="isf-select" {...props}>
+    {children}
+  </select>
+);
+
+export const Checkbox = ({ id = "", label = "", ...props }) => (
+  <label className="isf-checkbox-wrapper" htmlFor={id}>
+    <input id={id} type="checkbox" className="isf-checkbox" {...props} />
+    <span className="isf-checkbox-label">{label}</span>
+  </label>
+);
+
+export const Radio = ({ id = "", name = "", label = "", ...props }) => (
+  <label className="isf-radio-wrapper" htmlFor={id}>
+    <input id={id} type="radio" name={name} className="isf-radio" {...props} />
+    <span className="isf-radio-label">{label}</span>
+  </label>
+);
+
+export const RadioGroup = ({ children, className = "" }) => (
+  <div className={`isf-radio-group ${className}`}>{children}</div>
+);
+
+export const Toggle = ({ id = "", label = "", ...props }) => (
+  <label className="isf-toggle-wrapper" htmlFor={id}>
+    <input id={id} type="checkbox" className="isf-toggle" {...props} />
+    <span className="isf-toggle-label">{label}</span>
+  </label>
+);
+
+export const Range = ({ id = "", min = 0, max = 100, value = 50, showValue = true, ...props }) => (
+  <div className="isf-range-wrapper">
+    <input 
+      id={id}
+      type="range" 
+      min={min}
+      max={max}
+      defaultValue={value}
+      className="isf-range"
+      {...props}
+    />
+    {showValue && (
+      <div className="isf-range-value">
+        <span>{min}</span>
+        <span>{max}</span>
+      </div>
+    )}
+  </div>
+);
+
+export const FileInput = ({ id = "", label = "Choose File", buttonText = "Browse", ...props }) => (
+  <div className="isf-file-wrapper">
+    <input id={id} type="file" className="isf-file" {...props} />
+    <div className="isf-file-label">
+      <span>{label}</span>
+      <span className="isf-file-button">{buttonText}</span>
+    </div>
+  </div>
+);
+
+export const FormError = ({ children }) => (
+  <span className="isf-form-error">{children}</span>
+);
+
+export const FormHelp = ({ children }) => (
+  <span className="isf-form-help">{children}</span>
+);
+
+export const InputGroup = ({ prefix = null, suffix = null, children }) => (
+  <div className="isf-input-group">
+    {prefix && <span className="isf-input-prefix">{prefix}</span>}
+    {children}
+    {suffix && <span className="isf-input-suffix">{suffix}</span>}
+  </div>
+);
+
+export const Fieldset = ({ legend = "", children }) => (
+  <fieldset className="isf-fieldset">
+    {legend && <legend className="isf-fieldset-legend">{legend}</legend>}
+    {children}
+  </fieldset>
+);
+
+export const SearchInput = ({ id = "", placeholder = "Search...", ...props }) => (
+  <div className="isf-search-wrapper">
+    <input 
+      id={id}
+      type="search" 
+      placeholder={placeholder}
+      className="isf-search"
+      {...props}
+    />
+    <svg className="isf-search-icon" viewBox="0 0 16 16" fill="none">
+      <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5"/>
+      <line x1="11" y1="11" x2="15" y2="15" stroke="currentColor" strokeWidth="1.5"/>
+    </svg>
+  </div>
+);
+
 export default {
   CornerMark,
   CornerMarks,
@@ -154,5 +292,21 @@ export default {
   RegisteredMark,
   DotMatrix,
   WavePattern,
-  TriangleIndicator
+  TriangleIndicator,
+  FormGroup,
+  FormLabel,
+  Input,
+  Textarea,
+  Select,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Toggle,
+  Range,
+  FileInput,
+  FormError,
+  FormHelp,
+  InputGroup,
+  Fieldset,
+  SearchInput
 };

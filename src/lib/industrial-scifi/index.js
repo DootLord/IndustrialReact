@@ -11,7 +11,23 @@ export {
   RegisteredMark,
   DotMatrix,
   WavePattern,
-  TriangleIndicator
+  TriangleIndicator,
+  FormGroup,
+  FormLabel,
+  Input,
+  Textarea,
+  Select,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Toggle,
+  Range,
+  FileInput,
+  FormError,
+  FormHelp,
+  InputGroup,
+  Fieldset,
+  SearchInput
 } from './components.jsx';
 
 // CSS is imported via index.css
