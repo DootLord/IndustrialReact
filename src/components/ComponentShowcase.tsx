@@ -2,14 +2,21 @@
 import '../lib/industrial-scifi/index.css'
 import { useState } from 'react'
 
+interface Toast {
+  id: number;
+  type: 'success' | 'error' | 'warning' | 'info';
+  title: string;
+  message: string;
+}
+
 function ComponentShowcase() {
   const [primaryColor, setPrimaryColor] = useState('#FF5722')
   const [modalOpen, setModalOpen] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
-  const [openAccordion, setOpenAccordion] = useState(null)
-  const [toasts, setToasts] = useState([])
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null)
+  const [toasts, setToasts] = useState<Toast[]>([])
 
-  const addToast = (type) => {
+  const addToast = (type: Toast['type']) => {
     const newToast = {
       id: Date.now(),
       type,
@@ -32,7 +39,7 @@ function ComponentShowcase() {
   ]
 
   return (
-    <div className="isf-canvas" style={{ '--isf-color-accent-primary': primaryColor }}>
+    <div className="isf-canvas" style={{ '--isf-color-accent-primary': primaryColor } as React.CSSProperties}>
       {/* Background Layers */}
       <div className="isf-bg-grid"></div>
       <div className="isf-bg-noise"></div>
